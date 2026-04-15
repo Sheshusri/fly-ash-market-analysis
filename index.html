@@ -1,131 +1,152 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fly Ash Market Analysis - Meenakshi Energy Ltd</title>
+  <title>Fly Ash Market Analysis | Meenakshi Energy</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    body { font-family: 'Segoe UI', sans-serif; }
-    .card { transition: all 0.3s; }
-    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
+    .distance-btn {
+      transition: all 0.3s;
+    }
+    .distance-btn.active {
+      background-color: #1e40af;
+      color: white;
+      border-color: #1e40af;
+    }
   </style>
 </head>
 <body class="bg-gray-50">
 
-  <!-- Header -->
-  <header class="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-8">
+  <header class="bg-gradient-to-r from-blue-900 to-indigo-700 text-white py-10">
     <div class="max-w-7xl mx-auto px-6 text-center">
-      <h1 class="text-4xl font-bold">Fly Ash Market Analysis</h1>
-      <p class="text-xl mt-2">Meenakshi Energy Limited • Thamminapatnam, Nellore • Vedanta Ltd</p>
-      <p class="mt-1 text-blue-200">FY 2025-26 | Current Utilization: <span class="font-bold text-yellow-300">60%</span></p>
+      <h1 class="text-4xl font-bold">Fly Ash Market Analysis 2026</h1>
+      <p class="text-xl mt-2">Meenakshi Energy Limited • Thamminapatnam, Nellore • Vedanta</p>
     </div>
   </header>
 
   <div class="max-w-7xl mx-auto px-6 py-10">
 
     <!-- Key Metrics -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
-      <div class="bg-white rounded-xl shadow p-6 card">
-        <h3 class="text-gray-500 text-sm">Daily Coal Consumption</h3>
-        <p class="text-3xl font-bold text-blue-700">5,000 MT</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+      <div class="bg-white p-6 rounded-2xl shadow">
+        <p class="text-gray-500">Daily Coal</p>
+        <p class="text-3xl font-bold">5,000 MT</p>
       </div>
-      <div class="bg-white rounded-xl shadow p-6 card">
-        <h3 class="text-gray-500 text-sm">Daily Total Ash Generated</h3>
-        <p class="text-3xl font-bold text-orange-600">1,700 MT</p>
-      </div>
-      <div class="bg-white rounded-xl shadow p-6 card">
-        <h3 class="text-gray-500 text-sm">Daily Fly Ash</h3>
+      <div class="bg-white p-6 rounded-2xl shadow">
+        <p class="text-gray-500">Daily Fly Ash</p>
         <p class="text-3xl font-bold text-red-600">~1,300 MT</p>
       </div>
-      <div class="bg-white rounded-xl shadow p-6 card">
-        <h3 class="text-gray-500 text-sm">Legacy Pond Ash</h3>
+      <div class="bg-white p-6 rounded-2xl shadow">
+        <p class="text-gray-500">Utilization</p>
+        <p class="text-3xl font-bold text-orange-600">60%</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow">
+        <p class="text-gray-500">Legacy Pond Ash</p>
         <p class="text-3xl font-bold text-purple-600">80,000 MT</p>
       </div>
     </div>
 
-    <!-- Utilization -->
-    <div class="bg-white rounded-2xl shadow p-8 mb-10">
-      <h2 class="text-2xl font-semibold mb-4">Current Utilization Status</h2>
-      <div class="flex items-center gap-8">
-        <div class="flex-1">
-          <canvas id="utilizationChart"></canvas>
-        </div>
-        <div class="text-center">
-          <p class="text-6xl font-bold text-red-600">60%</p>
-          <p class="text-gray-500">Current Utilization</p>
-          <p class="mt-4 text-sm text-gray-600">Target: 80%+ within 6 months</p>
-        </div>
+    <!-- Interactive Distance Filter -->
+    <div class="bg-white rounded-3xl shadow p-8 mb-10">
+      <h2 class="text-2xl font-semibold mb-6">Select Distance Range</h2>
+      
+      <div class="flex flex-wrap gap-3 mb-8" id="distanceButtons">
+        <button onclick="filterByDistance(0)" class="distance-btn active px-6 py-3 border border-blue-600 rounded-full text-sm font-medium">0-50 km</button>
+        <button onclick="filterByDistance(50)" class="distance-btn px-6 py-3 border border-blue-600 rounded-full text-sm font-medium">50-100 km</button>
+        <button onclick="filterByDistance(100)" class="distance-btn px-6 py-3 border border-blue-600 rounded-full text-sm font-medium">100-150 km</button>
+        <button onclick="filterByDistance(150)" class="distance-btn px-6 py-3 border border-blue-600 rounded-full text-sm font-medium">150-200 km</button>
+        <button onclick="filterByDistance(200)" class="distance-btn px-6 py-3 border border-blue-600 rounded-full text-sm font-medium">200-250 km</button>
+        <button onclick="filterByDistance(250)" class="distance-btn px-6 py-3 border border-blue-600 rounded-full text-sm font-medium">250-300 km</button>
       </div>
-    </div>
 
-    <!-- Buyer Segmentation -->
-    <div class="bg-white rounded-2xl shadow p-8 mb-10">
-      <h2 class="text-2xl font-semibold mb-6">Buyer Segmentation (0-300 km)</h2>
-      <div class="overflow-x-auto">
-        <table class="min-w-full border-collapse">
-          <thead>
-            <tr class="bg-gray-100">
-              <th class="p-4 text-left">Distance</th>
-              <th class="p-4 text-left">Cement Plants</th>
-              <th class="p-4 text-left">Brick Manufacturers</th>
-              <th class="p-4 text-left">RMC / Road Projects</th>
-              <th class="p-4 text-left">Est. Potential (MT/month)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td class="p-4 border-t">0-50 km</td><td class="p-4 border-t">Penna, BirlaNu</td><td class="p-4 border-t">40-60+ small units</td><td class="p-4 border-t">NH-16 sections</td><td class="p-4 border-t font-medium">18,000 - 28,000</td></tr>
-            <tr><td class="p-4 border-t">50-100 km</td><td class="p-4 border-t">Small grinding units</td><td class="p-4 border-t">20-30 units</td><td class="p-4 border-t">NH-16 widening</td><td class="p-4 border-t font-medium">9,000 - 14,000</td></tr>
-            <tr><td class="p-4 border-t">100-200 km</td><td class="p-4 border-t">UltraTech, Ramco</td><td class="p-4 border-t">15-25 units</td><td class="p-4 border-t">NH-544G packages</td><td class="p-4 border-t font-medium">18,000 - 25,000</td></tr>
-          </tbody>
-        </table>
+      <!-- Dynamic Content Area -->
+      <div id="buyerContent" class="grid md:grid-cols-3 gap-6">
+        <!-- Content will be loaded here by JavaScript -->
       </div>
-    </div>
-
-    <!-- Competitor Analysis -->
-    <div class="bg-white rounded-2xl shadow p-8">
-      <h2 class="text-2xl font-semibold mb-6">Local Competitor Analysis (0-50 km)</h2>
-      <table class="min-w-full">
-        <thead>
-          <tr class="bg-gray-100">
-            <th class="p-4 text-left">Plant</th>
-            <th class="p-4 text-left">Fly Ash Gen (MMT/yr)</th>
-            <th class="p-4 text-left">Utilization %</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="p-4 border-t">SEIL P1 & P2</td><td class="p-4 border-t">2.5 - 3.0</td><td class="p-4 border-t text-green-600">88-115%</td></tr>
-          <tr><td class="p-4 border-t">SDSTPS</td><td class="p-4 border-t">0.9 - 1.2</td><td class="p-4 border-t text-green-600">95-100%</td></tr>
-          <tr><td class="p-4 border-t">Simhapuri TPS</td><td class="p-4 border-t">0.20 - 0.25</td><td class="p-4 border-t text-green-600">90-100%</td></tr>
-          <tr><td class="p-4 border-t font-medium">Meenakshi Energy (You)</td><td class="p-4 border-t font-medium">0.45 - 0.55</td><td class="p-4 border-t font-medium text-red-600">60%</td></tr>
-        </tbody>
-      </table>
     </div>
 
   </div>
 
-  <footer class="bg-gray-900 text-white py-8 text-center text-sm">
-    <p>Fly Ash Market Analysis • Meenakshi Energy Limited • Internship Project 2026</p>
-  </footer>
-
   <script>
-    // Utilization Chart
-    const ctx = document.getElementById('utilizationChart');
-    new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels: ['Sold', 'Unused'],
-        datasets: [{
-          data: [60, 40],
-          backgroundColor: ['#10b981', '#ef4444']
-        }]
+    const data = {
+      0: {
+        cement: "Penna Cement (Krishnapatnam), BirlaNu Fibre Cement Board (Nellore)",
+        bricks: "40-60+ units (Sullurpeta, Naidupeta, Gudur clusters)",
+        tpps: "Simhapuri TPS, SDSTPS, SEIL P1 & P2",
+        potential: "18,000 - 28,000 MT/month"
       },
-      options: {
-        responsive: true,
-        plugins: { legend: { position: 'bottom' } }
+      50: {
+        cement: "Small grinding units near Tirupati",
+        bricks: "20-30 units (Naidupeta cluster)",
+        tpps: "Limited",
+        potential: "9,000 - 14,000 MT/month"
+      },
+      100: {
+        cement: "Small blending units",
+        bricks: "10-15 units",
+        tpps: "Rayalaseema TPS (border)",
+        potential: "7,000 - 11,000 MT/month"
+      },
+      150: {
+        cement: "UltraTech (Tadipatri), Dalmia",
+        bricks: "6-10 units",
+        tpps: "Rayalaseema TPS",
+        potential: "6,000 - 10,000 MT/month"
+      },
+      200: {
+        cement: "Ramco units near Vijayawada",
+        bricks: "5-8 units",
+        tpps: "Dr. Narla Tata Rao TPS (Vijayawada)",
+        potential: "11,000 - 16,000 MT/month"
+      },
+      250: {
+        cement: "Limited",
+        bricks: "3-5 units",
+        tpps: "Simhadri STPS (NTPC)",
+        potential: "5,000 - 8,000 MT/month"
       }
-    });
+    };
+
+    function filterByDistance(km) {
+      // Remove active class from all buttons
+      document.querySelectorAll('.distance-btn').forEach(btn => btn.classList.remove('active'));
+      
+      // Add active class to clicked button
+      const buttons = document.querySelectorAll('.distance-btn');
+      buttons.forEach(btn => {
+        if (btn.textContent.includes(km + "-") || (km === 0 && btn.textContent.includes("0-50"))) {
+          btn.classList.add('active');
+        }
+      });
+
+      const content = document.getElementById('buyerContent');
+      const d = data[km];
+
+      content.innerHTML = `
+        <div class="bg-blue-50 p-6 rounded-2xl">
+          <h3 class="font-semibold text-blue-800 mb-3">Cement Plants</h3>
+          <p class="text-gray-700">${d.cement}</p>
+        </div>
+        <div class="bg-amber-50 p-6 rounded-2xl">
+          <h3 class="font-semibold text-amber-800 mb-3">Brick Manufacturers</h3>
+          <p class="text-gray-700">${d.bricks}</p>
+        </div>
+        <div class="bg-red-50 p-6 rounded-2xl">
+          <h3 class="font-semibold text-red-800 mb-3">Other TPPs (Competitors)</h3>
+          <p class="text-gray-700">${d.tpps}</p>
+        </div>
+        <div class="md:col-span-3 bg-green-50 p-6 rounded-2xl mt-4">
+          <h3 class="font-semibold text-green-800">Estimated Potential Demand</h3>
+          <p class="text-2xl font-bold text-green-700">${d.potential}</p>
+        </div>
+      `;
+    }
+
+    // Load default (0-50 km) on page load
+    window.onload = () => filterByDistance(0);
   </script>
 </body>
 </html>

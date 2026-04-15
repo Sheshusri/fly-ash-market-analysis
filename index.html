@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fly Ash Market Analysis - Meenakshi Energy Ltd</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; }
+    .card { transition: all 0.3s; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-8">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-4xl font-bold">Fly Ash Market Analysis</h1>
+      <p class="text-xl mt-2">Meenakshi Energy Limited • Thamminapatnam, Nellore • Vedanta Ltd</p>
+      <p class="mt-1 text-blue-200">FY 2025-26 | Current Utilization: <span class="font-bold text-yellow-300">60%</span></p>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-6 py-10">
+
+    <!-- Key Metrics -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+      <div class="bg-white rounded-xl shadow p-6 card">
+        <h3 class="text-gray-500 text-sm">Daily Coal Consumption</h3>
+        <p class="text-3xl font-bold text-blue-700">5,000 MT</p>
+      </div>
+      <div class="bg-white rounded-xl shadow p-6 card">
+        <h3 class="text-gray-500 text-sm">Daily Total Ash Generated</h3>
+        <p class="text-3xl font-bold text-orange-600">1,700 MT</p>
+      </div>
+      <div class="bg-white rounded-xl shadow p-6 card">
+        <h3 class="text-gray-500 text-sm">Daily Fly Ash</h3>
+        <p class="text-3xl font-bold text-red-600">~1,300 MT</p>
+      </div>
+      <div class="bg-white rounded-xl shadow p-6 card">
+        <h3 class="text-gray-500 text-sm">Legacy Pond Ash</h3>
+        <p class="text-3xl font-bold text-purple-600">80,000 MT</p>
+      </div>
+    </div>
+
+    <!-- Utilization -->
+    <div class="bg-white rounded-2xl shadow p-8 mb-10">
+      <h2 class="text-2xl font-semibold mb-4">Current Utilization Status</h2>
+      <div class="flex items-center gap-8">
+        <div class="flex-1">
+          <canvas id="utilizationChart"></canvas>
+        </div>
+        <div class="text-center">
+          <p class="text-6xl font-bold text-red-600">60%</p>
+          <p class="text-gray-500">Current Utilization</p>
+          <p class="mt-4 text-sm text-gray-600">Target: 80%+ within 6 months</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buyer Segmentation -->
+    <div class="bg-white rounded-2xl shadow p-8 mb-10">
+      <h2 class="text-2xl font-semibold mb-6">Buyer Segmentation (0-300 km)</h2>
+      <div class="overflow-x-auto">
+        <table class="min-w-full border-collapse">
+          <thead>
+            <tr class="bg-gray-100">
+              <th class="p-4 text-left">Distance</th>
+              <th class="p-4 text-left">Cement Plants</th>
+              <th class="p-4 text-left">Brick Manufacturers</th>
+              <th class="p-4 text-left">RMC / Road Projects</th>
+              <th class="p-4 text-left">Est. Potential (MT/month)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="p-4 border-t">0-50 km</td><td class="p-4 border-t">Penna, BirlaNu</td><td class="p-4 border-t">40-60+ small units</td><td class="p-4 border-t">NH-16 sections</td><td class="p-4 border-t font-medium">18,000 - 28,000</td></tr>
+            <tr><td class="p-4 border-t">50-100 km</td><td class="p-4 border-t">Small grinding units</td><td class="p-4 border-t">20-30 units</td><td class="p-4 border-t">NH-16 widening</td><td class="p-4 border-t font-medium">9,000 - 14,000</td></tr>
+            <tr><td class="p-4 border-t">100-200 km</td><td class="p-4 border-t">UltraTech, Ramco</td><td class="p-4 border-t">15-25 units</td><td class="p-4 border-t">NH-544G packages</td><td class="p-4 border-t font-medium">18,000 - 25,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Competitor Analysis -->
+    <div class="bg-white rounded-2xl shadow p-8">
+      <h2 class="text-2xl font-semibold mb-6">Local Competitor Analysis (0-50 km)</h2>
+      <table class="min-w-full">
+        <thead>
+          <tr class="bg-gray-100">
+            <th class="p-4 text-left">Plant</th>
+            <th class="p-4 text-left">Fly Ash Gen (MMT/yr)</th>
+            <th class="p-4 text-left">Utilization %</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="p-4 border-t">SEIL P1 & P2</td><td class="p-4 border-t">2.5 - 3.0</td><td class="p-4 border-t text-green-600">88-115%</td></tr>
+          <tr><td class="p-4 border-t">SDSTPS</td><td class="p-4 border-t">0.9 - 1.2</td><td class="p-4 border-t text-green-600">95-100%</td></tr>
+          <tr><td class="p-4 border-t">Simhapuri TPS</td><td class="p-4 border-t">0.20 - 0.25</td><td class="p-4 border-t text-green-600">90-100%</td></tr>
+          <tr><td class="p-4 border-t font-medium">Meenakshi Energy (You)</td><td class="p-4 border-t font-medium">0.45 - 0.55</td><td class="p-4 border-t font-medium text-red-600">60%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <footer class="bg-gray-900 text-white py-8 text-center text-sm">
+    <p>Fly Ash Market Analysis • Meenakshi Energy Limited • Internship Project 2026</p>
+  </footer>
+
+  <script>
+    // Utilization Chart
+    const ctx = document.getElementById('utilizationChart');
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Sold', 'Unused'],
+        datasets: [{
+          data: [60, 40],
+          backgroundColor: ['#10b981', '#ef4444']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+  </script>
+</body>
+</html>
